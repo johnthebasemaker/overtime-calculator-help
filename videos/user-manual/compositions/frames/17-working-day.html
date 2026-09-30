@@ -1,0 +1,71 @@
+<template>
+<style>
+@font-face{font-family:'Montserrat';font-weight:700;src:url('assets/fonts/montserrat-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:800;src:url('assets/fonts/montserrat-latin-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:900;src:url('assets/fonts/montserrat-latin-900-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:400;src:url('assets/fonts/roboto-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:500;src:url('assets/fonts/roboto-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:700;src:url('assets/fonts/roboto-latin-700-normal.woff2') format('woff2')}
+
+#root{position:absolute;inset:0;overflow:hidden;font-family:'Roboto',sans-serif;color:#ECF7F2}
+.m17-k1{position:absolute;left:76px;top:58px;font:900 42px/1 'Montserrat',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#6EE7B7}
+.m17-k2{position:absolute;left:76px;top:112px;right:60px;font:900 64px/1.05 'Montserrat',sans-serif;letter-spacing:-.01em;color:#ECF7F2}
+.m17-phone{position:absolute;left:243px;top:151px;width:594px;height:1254px;border-radius:76px;background:#0c1f1a;border:13px solid #22473d;box-shadow:0 32px 86px rgba(0,0,0,.55);overflow:hidden}
+.m17-scr{position:absolute;inset:0;overflow:hidden;border-radius:63px;background:#0b2621}
+.m17-notch{position:absolute;top:12px;left:50%;margin-left:-13px;width:26px;height:26px;border-radius:50%;background:#000;box-shadow:0 0 0 3px rgba(255,255,255,.06);z-index:20}
+.m17-shot{position:absolute;left:0;top:0;width:568px;display:block}
+.m17-tap{position:absolute;width:108px;height:108px;margin:-54px 0 0 -54px;border-radius:50%;border:10px solid #F59E0B;background:rgba(245,158,11,.22);box-sizing:border-box;opacity:0;z-index:30}
+.m17-mark{position:absolute;border:6px solid #F59E0B;border-radius:14px;box-sizing:border-box;opacity:0;z-index:25}
+.m17-ok{border-color:#6EE7B7}
+.m17-flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:15}
+.m17-ring{position:absolute;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:8px solid #6EE7B7;opacity:0;z-index:31}
+</style>
+<div data-hf-id="hf-sdva" id="root" data-composition-id="17-working-day" data-width="1080" data-height="1920">
+<div data-hf-id="hf-qs9u" class="m17-phone" id="m17-phone"><div data-hf-id="hf-fmj6" class="m17-scr" id="m17-scr"><img data-hf-id="hf-ndd1" class="m17-shot" id="m17-home" src="assets/img/man-home.png" alt=""><img data-hf-id="hf-qr9p" class="m17-shot" id="m17-set" src="assets/img/man-settings.png" alt="" style="opacity:0"><img data-hf-id="hf-6smn" class="m17-shot" id="m17-day" src="assets/img/man-workday.png" alt="" style="opacity:0"><img data-hf-id="hf-g726" class="m17-shot" id="m17-shift" src="assets/img/man-workday-shift.png" alt="" style="opacity:0"><div data-hf-id="hf-q7j4" class="m17-notch"></div></div></div><div data-hf-id="hf-zjxi" class="m17-ring" id="m17-ring"></div><div data-hf-id="hf-pwc0" class="m17-mark m17-ok" id="m17-hrs" style="left:267.7px;top:449.5px;width:544.7px;height:93.2px"></div><div data-hf-id="hf-9e39" class="m17-mark m17-ok" id="m17-lunch" style="left:267.7px;top:644.6px;width:544.7px;height:96.1px"></div><div data-hf-id="hf-h3nf" class="m17-mark m17-ok" id="m17-sh" style="left:267.7px;top:660.6px;width:544.7px;height:101.9px"></div><div data-hf-id="hf-bnlj" class="m17-mark m17-ok" id="m17-abs" style="left:267.7px;top:868.9px;width:544.7px;height:128.2px"></div><div data-hf-id="hf-uz50" class="m17-tap" id="m17-tap0"></div><div data-hf-id="hf-xyel" class="m17-tap" id="m17-tap1"></div>
+</div>
+<script>
+(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  const P = '#m17-';
+  const K = 1.4564102564102563, SX = 256, SY = 164;
+  let tapN = 0;
+  // A finger tap: the ring lands, presses and lifts at time t.
+  const tap = (cx, cy, t) => {
+    const el = P + 'tap' + tapN++;
+    tl.set(el, { left: SX + cx * K, top: SY + cy * K }, 0);
+    tl.fromTo(el, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out', immediateRender: false }, t - 0.4);
+    tl.to(el, { scale: 0.78, duration: 0.1, ease: 'power1.in' }, t);
+    tl.to(el, { scale: 1.2, opacity: 0, duration: 0.35, ease: 'power2.out' }, t + 0.12);
+  };
+  // The next screen: instant, or faded over d seconds.
+  const show = (id, t, d = 0) => d
+    ? tl.fromTo(P + id, { opacity: 0 }, { opacity: 1, duration: d, ease: 'power1.inOut', immediateRender: false }, t)
+    : tl.set(P + id, { opacity: 1 }, t);
+  const kick = (t = 0.15) => {
+    tl.fromTo([P + 'k1', P + 'k2'], { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out', stagger: 0.12 }, t);
+  };
+  const flash = (t) => {
+    tl.fromTo(P + 'flash', { opacity: 0.85 }, { opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, t);
+  };
+  const markOn = (id, t) => {
+    tl.fromTo(P + id, { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)', immediateRender: false }, t);
+  };
+
+  const up = (id, t) => tl.fromTo(P + id, { opacity: 1, y: 1228 }, { y: 0, duration: 0.45, ease: 'power3.out', immediateRender: false }, t);
+  const slide = (id, t) => tl.fromTo(P + id, { opacity: 1, x: 568 }, { x: 0, duration: 0.5, ease: 'power3.inOut', immediateRender: false }, t);
+  // The gear, lit first: it is where every rule below lives.
+  tl.set(P + 'ring', { left: SX + 352 * K, top: SY + 58 * K }, 0);
+  tl.fromTo(P + 'ring', { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(2)' }, 0.3);
+  tl.to(P + 'ring', { scale: 1.15, duration: 0.25, yoyo: true, repeat: 1, ease: 'power1.inOut' }, 0.8);
+  tap(352, 58, 1.35);
+  tl.to(P + 'ring', { opacity: 0, duration: 0.25 }, 1.4);
+  up('set', 1.55);
+  tap(195, 495, 2.5); show('day', 2.75, 0.2);
+  markOn('hrs', 3.4); markOn('lunch', 4.3);
+  show('shift', 5.2, 0.25); tl.set([P + 'hrs', P + 'lunch'], { opacity: 0 }, 5.2);
+  markOn('sh', 5.5); markOn('abs', 7.6);
+  window.__timelines['17-working-day'] = tl;
+})();
+</script>
+</template>

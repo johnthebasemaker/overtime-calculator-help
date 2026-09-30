@@ -1,0 +1,60 @@
+:root {
+  --bg: #0a2620;
+  --glass: #16382f;
+  --ink: #ecf7f2;
+  --soft: #c3d9cf;
+  --acc: #10b981;
+  --acc3: #6ee7b7;
+  --line: #1f4a3e;
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px 16px 48px;
+}
+main { max-width: 520px; margin: 0 auto; }
+a { color: var(--acc3); }
+h1 { font-size: 26px; line-height: 1.2; font-weight: 800; }
+.lead { color: var(--soft); margin-top: 6px; }
+.back { display: inline-block; margin-bottom: 14px; font-weight: 700; text-decoration: none; }
+video {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  aspect-ratio: 9 / 16;
+  margin-top: 16px;
+  border-radius: 18px;
+  background: #000;
+}
+.chapters { display: grid; gap: 8px; margin-top: 16px; padding: 0; list-style: none; }
+.chapters button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--glass);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  text-align: start;
+  cursor: pointer;
+}
+.chapters button span { color: var(--acc3); min-width: 3.2em; font-variant-numeric: tabular-nums; }
+.cards { display: grid; gap: 12px; margin-top: 18px; }
+.card {
+  display: block;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--glass);
+  text-decoration: none;
+  color: var(--ink);
+}
+.card b { display: block; font-size: 18px; }
+.card small { color: var(--soft); }
+.note { margin-top: 18px; font-size: 14px; color: var(--soft); }

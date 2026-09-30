@@ -1,0 +1,70 @@
+<template>
+<style>
+@font-face{font-family:'Montserrat';font-weight:700;src:url('assets/fonts/montserrat-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:800;src:url('assets/fonts/montserrat-latin-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:900;src:url('assets/fonts/montserrat-latin-900-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:400;src:url('assets/fonts/roboto-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:500;src:url('assets/fonts/roboto-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:700;src:url('assets/fonts/roboto-latin-700-normal.woff2') format('woff2')}
+
+#root{position:absolute;inset:0;overflow:hidden;font-family:'Roboto',sans-serif;color:#ECF7F2}
+.m04-k1{position:absolute;left:76px;top:58px;font:900 42px/1 'Montserrat',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#6EE7B7}
+.m04-k2{position:absolute;left:76px;top:112px;right:60px;font:900 64px/1.05 'Montserrat',sans-serif;letter-spacing:-.01em;color:#ECF7F2}
+.m04-phone{position:absolute;left:243px;top:151px;width:594px;height:1254px;border-radius:76px;background:#0c1f1a;border:13px solid #22473d;box-shadow:0 32px 86px rgba(0,0,0,.55);overflow:hidden}
+.m04-scr{position:absolute;inset:0;overflow:hidden;border-radius:63px;background:#0b2621}
+.m04-notch{position:absolute;top:12px;left:50%;margin-left:-13px;width:26px;height:26px;border-radius:50%;background:#000;box-shadow:0 0 0 3px rgba(255,255,255,.06);z-index:20}
+.m04-shot{position:absolute;left:0;top:0;width:568px;display:block}
+.m04-tap{position:absolute;width:108px;height:108px;margin:-54px 0 0 -54px;border-radius:50%;border:10px solid #F59E0B;background:rgba(245,158,11,.22);box-sizing:border-box;opacity:0;z-index:30}
+.m04-mark{position:absolute;border:6px solid #F59E0B;border-radius:14px;box-sizing:border-box;opacity:0;z-index:25}
+.m04-ok{border-color:#6EE7B7}
+.m04-flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:15}
+.m04-under{position:absolute;left:60px;right:60px;top:1432px;height:130px;display:flex;align-items:center;justify-content:center;z-index:45}
+.m04-pill{display:flex;align-items:center;gap:22px;padding:18px 34px;border-radius:26px;background:#123a30;border:3px solid rgba(16,185,129,.45);box-shadow:0 18px 44px rgba(0,0,0,.45);opacity:0}
+.m04-pl{font:500 30px/1.1 'Roboto',sans-serif;color:#C3D9CF;letter-spacing:.06em;text-transform:uppercase}
+.m04-pv{font:800 48px/1 'Montserrat',sans-serif;color:#ECF7F2;font-variant-numeric:tabular-nums;white-space:nowrap}.m04-vs{position:relative;display:block;min-width:400px;height:52px}
+.m04-v{position:absolute;right:0;top:0;opacity:0}
+</style>
+<div data-hf-id="hf-1wm4" id="root" data-composition-id="04-month" data-width="1080" data-height="1920">
+<div data-hf-id="hf-ypoq" class="m04-phone" id="m04-phone"><div data-hf-id="hf-17c2" class="m04-scr" id="m04-scr"><img data-hf-id="hf-2d55" class="m04-shot" id="m04-s10" src="assets/img/man-step-10.png" alt=""><img data-hf-id="hf-5e5i" class="m04-shot" id="m04-s105" src="assets/img/man-step-10.5.png" alt="" style="opacity:0"><img data-hf-id="hf-h2s4" class="m04-shot" id="m04-s11" src="assets/img/man-step-11.png" alt="" style="opacity:0"><div data-hf-id="hf-rsxw" class="m04-notch"></div></div></div><div data-hf-id="hf-2ndm" class="m04-mark" id="m04-ot" style="left:267.7px;top:718.9px;width:544.7px;height:113.6px"></div><div data-hf-id="hf-7h4w" class="m04-tap" id="m04-tap0"></div><div data-hf-id="hf-ageh" class="m04-tap" id="m04-tap1"></div><div data-hf-id="hf-eeii" class="m04-tap" id="m04-tap2"></div><div data-hf-id="hf-xu8c" class="m04-under"><div data-hf-id="hf-xa7m" class="m04-pill" id="m04-pill"><span data-hf-id="hf-zdis" class="m04-pl">Earned</span><span data-hf-id="hf-mfuy" class="m04-vs"><span data-hf-id="hf-un7i" class="m04-pv m04-v" id="m04-v0">SAR&#160;2,541.70</span><span data-hf-id="hf-nafp" class="m04-pv m04-v" id="m04-v1">SAR&#160;2,548.79</span><span data-hf-id="hf-zpeh" class="m04-pv m04-v" id="m04-v2">SAR&#160;2,555.87</span></span></div></div>
+</div>
+<script>
+(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  const P = '#m04-';
+  const K = 1.4564102564102563, SX = 256, SY = 164;
+  let tapN = 0;
+  // A finger tap: the ring lands, presses and lifts at time t.
+  const tap = (cx, cy, t) => {
+    const el = P + 'tap' + tapN++;
+    tl.set(el, { left: SX + cx * K, top: SY + cy * K }, 0);
+    tl.fromTo(el, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out', immediateRender: false }, t - 0.4);
+    tl.to(el, { scale: 0.78, duration: 0.1, ease: 'power1.in' }, t);
+    tl.to(el, { scale: 1.2, opacity: 0, duration: 0.35, ease: 'power2.out' }, t + 0.12);
+  };
+  // The next screen: instant, or faded over d seconds.
+  const show = (id, t, d = 0) => d
+    ? tl.fromTo(P + id, { opacity: 0 }, { opacity: 1, duration: d, ease: 'power1.inOut', immediateRender: false }, t)
+    : tl.set(P + id, { opacity: 1 }, t);
+  const kick = (t = 0.15) => {
+    tl.fromTo([P + 'k1', P + 'k2'], { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out', stagger: 0.12 }, t);
+  };
+  const flash = (t) => {
+    tl.fromTo(P + 'flash', { opacity: 0.85 }, { opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, t);
+  };
+  const markOn = (id, t) => {
+    tl.fromTo(P + id, { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)', immediateRender: false }, t);
+  };
+
+  tap(264, 308, 1.1);
+  markOn('ot', 2.6);
+  tl.fromTo(P + 'pill', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out' }, 3.4);
+  tl.set(P + 'v0', { opacity: 1 }, 3.4);
+  tap(329, 422, 5.0); show('s105', 5.1); tl.set(P + 'v0', { opacity: 0 }, 5.1); tl.set(P + 'v1', { opacity: 1 }, 5.1);
+  tap(329, 422, 6.3); show('s11', 6.4); tl.set(P + 'v1', { opacity: 0 }, 6.4); tl.set(P + 'v2', { opacity: 1 }, 6.4);
+  tl.fromTo(P + 'pill', { scale: 1 }, { scale: 1.06, duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, 5.1);
+  tl.fromTo(P + 'pill', { scale: 1 }, { scale: 1.06, duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, 6.4);
+  window.__timelines['04-month'] = tl;
+})();
+</script>
+</template>

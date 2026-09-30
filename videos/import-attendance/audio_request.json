@@ -1,0 +1,50 @@
+{
+  "provider": "kokoro",
+  "lang": "en",
+  "speed": 0.92,
+  "lines": [
+    {
+      "id": "01",
+      "text": "Fill a whole month of hours in under a minute, straight from your attendance report."
+    },
+    {
+      "id": "02",
+      "text": "Log in to the attendance portal. Open Request Lists, then Daily Attendance Report."
+    },
+    {
+      "id": "03",
+      "text": "Pick the first and last day of the month, and tap Search."
+    },
+    {
+      "id": "04",
+      "text": "Take screenshots from the top of the table down to the Total row. Overlapping is fine."
+    },
+    {
+      "id": "05",
+      "text": "At the bottom, swipe the table sideways and take one more, so the app can read Sick Leave or Holiday too."
+    },
+    {
+      "id": "06",
+      "text": "Now in the app: Count it day by day, Import, Upload screenshots, and pick them all. It's read on your phone. Nothing is uploaded."
+    },
+    {
+      "id": "07",
+      "text": "The app checks itself against the report's own totals. Three ticks means every day was read right."
+    },
+    {
+      "id": "08",
+      "text": "Missed punches are filled the way payroll does it, and Fridays, holidays and leave come straight from the report."
+    },
+    {
+      "id": "09",
+      "text": "Tap Fill in. Your month is done, and saved to History."
+    },
+    {
+      "id": "10",
+      "text": "That's it. Your report never leaves your phone."
+    }
+  ],
+  "bgm": {
+    "mode": "none"
+  }
+}

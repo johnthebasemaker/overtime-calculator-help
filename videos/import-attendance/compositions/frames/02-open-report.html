@@ -1,0 +1,65 @@
+<template>
+<style>
+@font-face{font-family:'Montserrat';font-weight:700;src:url('assets/fonts/montserrat-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:800;src:url('assets/fonts/montserrat-latin-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:900;src:url('assets/fonts/montserrat-latin-900-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:400;src:url('assets/fonts/roboto-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:500;src:url('assets/fonts/roboto-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:700;src:url('assets/fonts/roboto-latin-700-normal.woff2') format('woff2')}
+
+#root{position:absolute;inset:0;overflow:hidden;font-family:'Roboto',sans-serif;color:#ECF7F2}
+.f02-k1{position:absolute;left:76px;top:58px;font:900 42px/1 'Montserrat',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#6EE7B7}
+.f02-k2{position:absolute;left:76px;top:112px;right:60px;font:900 64px/1.05 'Montserrat',sans-serif;letter-spacing:-.01em;color:#ECF7F2}
+.f02-phone{position:absolute;left:243px;top:281px;width:594px;height:1254px;border-radius:76px;background:#0c1f1a;border:13px solid #22473d;box-shadow:0 32px 86px rgba(0,0,0,.55);overflow:hidden}
+.f02-scr{position:absolute;inset:0;overflow:hidden;border-radius:63px;background:#0b2621}
+.f02-notch{position:absolute;top:12px;left:50%;margin-left:-13px;width:26px;height:26px;border-radius:50%;background:#000;box-shadow:0 0 0 3px rgba(255,255,255,.06);z-index:20}
+.f02-shot{position:absolute;left:0;top:0;width:568px;display:block}
+.f02-tap{position:absolute;width:108px;height:108px;margin:-54px 0 0 -54px;border-radius:50%;border:10px solid #F59E0B;background:rgba(245,158,11,.22);box-sizing:border-box;opacity:0;z-index:30}
+.f02-mark{position:absolute;border:6px solid #F59E0B;border-radius:14px;box-sizing:border-box;opacity:0;z-index:25}
+.f02-ok{border-color:#6EE7B7}
+.f02-flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:15}
+
+</style>
+<div data-hf-id="hf-0u0p" id="root" data-composition-id="02-open-report" data-width="1080" data-height="1920">
+<div data-hf-id="hf-0n6v" class="f02-k1" id="f02-k1" data-layout-allow-overlap="">Step 1</div><div data-hf-id="hf-qs2j" class="f02-k2" id="f02-k2" data-layout-allow-overlap="">Open the report</div><div data-hf-id="hf-j654" class="f02-phone" id="f02-phone"><div data-hf-id="hf-fy8o" class="f02-scr" id="f02-scr"><img data-hf-id="hf-4fcl" class="f02-shot" id="f02-dash" src="assets/img/portal-dashboard.png" alt=""><img data-hf-id="hf-vwzc" class="f02-shot" id="f02-menu" src="assets/img/portal-menu.png" alt="" style="opacity:0"><div data-hf-id="hf-okv1" class="f02-notch"></div></div></div><div data-hf-id="hf-jbgj" class="f02-mark" id="f02-daily" style="left:256px;top:1006.2px;width:568px;height:49.5px"></div><div data-hf-id="hf-leha" class="f02-tap" id="f02-tap0"></div><div data-hf-id="hf-pclb" class="f02-tap" id="f02-tap1"></div><div data-hf-id="hf-eh3o" class="f02-tap" id="f02-tap2"></div>
+</div>
+<script>
+(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  const P = '#f02-';
+  const K = 1.4564102564102563, SX = 256, SY = 294;
+  let tapN = 0;
+  // A finger tap: the ring lands, presses and lifts at time t.
+  const tap = (cx, cy, t) => {
+    const el = P + 'tap' + tapN++;
+    tl.set(el, { left: SX + cx * K, top: SY + cy * K }, 0);
+    tl.fromTo(el, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out', immediateRender: false }, t - 0.4);
+    tl.to(el, { scale: 0.78, duration: 0.1, ease: 'power1.in' }, t);
+    tl.to(el, { scale: 1.2, opacity: 0, duration: 0.35, ease: 'power2.out' }, t + 0.12);
+  };
+  // The next screen: instant, or faded over d seconds.
+  const show = (id, t, d = 0) => d
+    ? tl.fromTo(P + id, { opacity: 0 }, { opacity: 1, duration: d, ease: 'power1.inOut', immediateRender: false }, t)
+    : tl.set(P + id, { opacity: 1 }, t);
+  const kick = (t = 0.15) => {
+    tl.fromTo([P + 'k1', P + 'k2'], { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out', stagger: 0.12 }, t);
+  };
+  const flash = (t) => {
+    tl.fromTo(P + 'flash', { opacity: 0.85 }, { opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, t);
+  };
+  const markOn = (id, t) => {
+    tl.fromTo(P + id, { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)', immediateRender: false }, t);
+  };
+
+  kick();
+  tap(26, 26, 2.75);
+  tl.fromTo(P + 'menu', { opacity: 1, x: -568 }, { x: 0, duration: 0.45, ease: 'power3.out', immediateRender: false }, 2.9);
+  tl.set(P + 'menu', { opacity: 0 }, 0);
+  tap(195, 275, 3.6);
+  tap(195, 506, 5.0);
+  markOn('daily', 5.2);
+  window.__timelines['02-open-report'] = tl;
+})();
+</script>
+</template>

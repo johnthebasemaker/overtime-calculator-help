@@ -1,0 +1,66 @@
+{
+  "provider": "kokoro",
+  "lang": "en",
+  "speed": 0.92,
+  "lines": [
+    {
+      "id": "01",
+      "text": "This is Overtime Calculator. It works out your pay the way your company does, and it all stays on your phone."
+    },
+    {
+      "id": "03",
+      "text": "Start at the top. Enter your basic pay and food allowance once. The app carries them to every month."
+    },
+    {
+      "id": "04",
+      "text": "Pick the month you worked. If you know your overtime, type it in, or tap plus and minus half an hour at a time."
+    },
+    {
+      "id": "05",
+      "text": "Or count it day by day. Enter your time at work, lunch included. The app takes lunch off and counts everything past nine hours. Next moves you to the next day."
+    },
+    {
+      "id": "06",
+      "text": "On a Friday or a holiday, everything after lunch is overtime. Absent is deducted. Medical leave is paid, with no overtime."
+    },
+    {
+      "id": "08",
+      "text": "Faster still: screenshot your attendance report and import it. The app checks it against the report's totals. The Import video shows every step."
+    },
+    {
+      "id": "10",
+      "text": "When every day of a month is filled in, it saves itself to History. Change a day later, and History follows."
+    },
+    {
+      "id": "11",
+      "text": "When your payslip arrives, enter what you were paid. The app shows any difference, and reminds you that overtime comes with the next month's salary."
+    },
+    {
+      "id": "12",
+      "text": "Each year adds up your overtime against the legal limit of 720 hours, and any month can be shared as a PDF."
+    },
+    {
+      "id": "14",
+      "text": "End of Service shows what you'd get if you left. Use the date of your first contract. Resigning pays less in the first ten years; a contract that ends pays in full."
+    },
+    {
+      "id": "15",
+      "text": "Add your leave and air ticket. Enter unpaid leave one stretch at a time. The first twenty days of each still count as service."
+    },
+    {
+      "id": "17",
+      "text": "Settings holds your company's rules: an eight-hour day plus lunch, your shift for missed punches, and a day's pay as one thirtieth of the month."
+    },
+    {
+      "id": "18",
+      "text": "Set when overtime is paid, get reminders before your iqama expires, switch to Arabic, and back everything up."
+    },
+    {
+      "id": "19",
+      "text": "Your pay, checked. Everything stays on your phone."
+    }
+  ],
+  "bgm": {
+    "mode": "none"
+  }
+}

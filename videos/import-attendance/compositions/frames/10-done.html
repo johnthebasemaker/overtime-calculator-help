@@ -1,0 +1,67 @@
+<template>
+<style>
+@font-face{font-family:'Montserrat';font-weight:700;src:url('assets/fonts/montserrat-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:800;src:url('assets/fonts/montserrat-latin-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:900;src:url('assets/fonts/montserrat-latin-900-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:400;src:url('assets/fonts/roboto-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:500;src:url('assets/fonts/roboto-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:700;src:url('assets/fonts/roboto-latin-700-normal.woff2') format('woff2')}
+
+#root{position:absolute;inset:0;overflow:hidden;font-family:'Roboto',sans-serif;color:#ECF7F2}
+.f10-k1{position:absolute;left:76px;top:58px;font:900 42px/1 'Montserrat',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#6EE7B7}
+.f10-k2{position:absolute;left:76px;top:112px;right:60px;font:900 64px/1.05 'Montserrat',sans-serif;letter-spacing:-.01em;color:#ECF7F2}
+.f10-phone{position:absolute;left:243px;top:281px;width:594px;height:1254px;border-radius:76px;background:#0c1f1a;border:13px solid #22473d;box-shadow:0 32px 86px rgba(0,0,0,.55);overflow:hidden}
+.f10-scr{position:absolute;inset:0;overflow:hidden;border-radius:63px;background:#0b2621}
+.f10-notch{position:absolute;top:12px;left:50%;margin-left:-13px;width:26px;height:26px;border-radius:50%;background:#000;box-shadow:0 0 0 3px rgba(255,255,255,.06);z-index:20}
+.f10-shot{position:absolute;left:0;top:0;width:568px;display:block}
+.f10-tap{position:absolute;width:108px;height:108px;margin:-54px 0 0 -54px;border-radius:50%;border:10px solid #F59E0B;background:rgba(245,158,11,.22);box-sizing:border-box;opacity:0;z-index:30}
+.f10-mark{position:absolute;border:6px solid #F59E0B;border-radius:14px;box-sizing:border-box;opacity:0;z-index:25}
+.f10-ok{border-color:#6EE7B7}
+.f10-flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:15}
+.f10-icon{position:absolute;left:86px;top:420px;width:160px;height:160px;border-radius:38px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.f10-icon img{width:100%;height:100%;display:block}
+.f10-title{position:absolute;left:86px;right:60px;top:660px}
+.f10-l{display:block;font:900 110px/1.05 'Montserrat',sans-serif;letter-spacing:-.02em;color:#ECF7F2}
+.f10-acc{color:#6EE7B7}
+.f10-p{margin-top:56px;font:700 44px/1.35 'Montserrat',sans-serif;color:#C3D9CF}
+</style>
+<div data-hf-id="hf-iljt" id="root" data-composition-id="10-done" data-width="1080" data-height="1920">
+<div data-hf-id="hf-6mui" class="f10-icon" id="f10-icon"><img data-hf-id="hf-10ra" src="assets/img/app-icon.png" alt=""></div>
+<div data-hf-id="hf-9kvw" class="f10-title"><span data-hf-id="hf-fl0n" class="f10-l" id="f10-l1">Stays on</span><span data-hf-id="hf-pgep" class="f10-l f10-acc" id="f10-l2">your phone.</span><div data-hf-id="hf-rao1" class="f10-p" id="f10-p">Full guide: Help, in the app</div></div>
+</div>
+<script>
+(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  const P = '#f10-';
+  const K = 1.4564102564102563, SX = 256, SY = 294;
+  let tapN = 0;
+  // A finger tap: the ring lands, presses and lifts at time t.
+  const tap = (cx, cy, t) => {
+    const el = P + 'tap' + tapN++;
+    tl.set(el, { left: SX + cx * K, top: SY + cy * K }, 0);
+    tl.fromTo(el, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out', immediateRender: false }, t - 0.4);
+    tl.to(el, { scale: 0.78, duration: 0.1, ease: 'power1.in' }, t);
+    tl.to(el, { scale: 1.2, opacity: 0, duration: 0.35, ease: 'power2.out' }, t + 0.12);
+  };
+  // The next screen: instant, or faded over d seconds.
+  const show = (id, t, d = 0) => d
+    ? tl.fromTo(P + id, { opacity: 0 }, { opacity: 1, duration: d, ease: 'power1.inOut', immediateRender: false }, t)
+    : tl.set(P + id, { opacity: 1 }, t);
+  const kick = (t = 0.15) => {
+    tl.fromTo([P + 'k1', P + 'k2'], { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out', stagger: 0.12 }, t);
+  };
+  const flash = (t) => {
+    tl.fromTo(P + 'flash', { opacity: 0.85 }, { opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, t);
+  };
+  const markOn = (id, t) => {
+    tl.fromTo(P + id, { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)', immediateRender: false }, t);
+  };
+
+  tl.fromTo(P + 'icon', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out' }, 0.2);
+  tl.fromTo([P + 'l1', P + 'l2'], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', stagger: 0.15 }, 0.35);
+  tl.fromTo(P + 'p', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out' }, 1.3);
+  window.__timelines['10-done'] = tl;
+})();
+</script>
+</template>

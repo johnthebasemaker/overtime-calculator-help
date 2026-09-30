@@ -1,0 +1,72 @@
+<template>
+<style>
+@font-face{font-family:'Montserrat';font-weight:700;src:url('assets/fonts/montserrat-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:800;src:url('assets/fonts/montserrat-latin-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:900;src:url('assets/fonts/montserrat-latin-900-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:400;src:url('assets/fonts/roboto-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:500;src:url('assets/fonts/roboto-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Roboto';font-weight:700;src:url('assets/fonts/roboto-latin-700-normal.woff2') format('woff2')}
+
+#root{position:absolute;inset:0;overflow:hidden;font-family:'Roboto',sans-serif;color:#ECF7F2}
+.m01-k1{position:absolute;left:76px;top:58px;font:900 42px/1 'Montserrat',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#6EE7B7}
+.m01-k2{position:absolute;left:76px;top:112px;right:60px;font:900 64px/1.05 'Montserrat',sans-serif;letter-spacing:-.01em;color:#ECF7F2}
+.m01-phone{position:absolute;left:243px;top:151px;width:594px;height:1254px;border-radius:76px;background:#0c1f1a;border:13px solid #22473d;box-shadow:0 32px 86px rgba(0,0,0,.55);overflow:hidden}
+.m01-scr{position:absolute;inset:0;overflow:hidden;border-radius:63px;background:#0b2621}
+.m01-notch{position:absolute;top:12px;left:50%;margin-left:-13px;width:26px;height:26px;border-radius:50%;background:#000;box-shadow:0 0 0 3px rgba(255,255,255,.06);z-index:20}
+.m01-shot{position:absolute;left:0;top:0;width:568px;display:block}
+.m01-tap{position:absolute;width:108px;height:108px;margin:-54px 0 0 -54px;border-radius:50%;border:10px solid #F59E0B;background:rgba(245,158,11,.22);box-sizing:border-box;opacity:0;z-index:30}
+.m01-mark{position:absolute;border:6px solid #F59E0B;border-radius:14px;box-sizing:border-box;opacity:0;z-index:25}
+.m01-ok{border-color:#6EE7B7}
+.m01-flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:15}
+.m01-icon{position:absolute;left:86px;top:300px;width:190px;height:190px;border-radius:44px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.m01-icon img{width:100%;height:100%;display:block}
+.m01-title{position:absolute;left:86px;right:60px;top:560px}
+.m01-l{display:block;font:900 118px/1.04 'Montserrat',sans-serif;letter-spacing:-.02em;color:#ECF7F2}
+.m01-acc{color:#6EE7B7}
+.m01-p{margin-top:50px;max-width:880px;font:700 50px/1.3 'Montserrat',sans-serif;color:#C3D9CF}
+.m01-chip{position:absolute;left:86px;top:1180px;display:flex;align-items:center;gap:16px;padding:16px 30px 16px 22px;border-radius:99px;background:rgba(16,185,129,.18);border:3px solid rgba(110,231,183,.5);font:800 44px/1 'Montserrat',sans-serif;color:#6EE7B7;opacity:0}
+</style>
+<div data-hf-id="hf-sd2j" id="root" data-composition-id="01-open" data-width="1080" data-height="1920">
+<div data-hf-id="hf-91bm" class="m01-icon" id="m01-icon"><img data-hf-id="hf-10ra" src="assets/img/app-icon.png" alt=""></div>
+<div data-hf-id="hf-7pow" class="m01-title" id="m01-title"><span data-hf-id="hf-q9eh" class="m01-l" id="m01-l1">Overtime</span><span data-hf-id="hf-2oz1" class="m01-l m01-acc" id="m01-l2">Calculator</span><div data-hf-id="hf-fusl" class="m01-p" id="m01-p">Your pay, worked out the way your company does it.</div></div>
+<div data-hf-id="hf-lwaq" class="m01-chip" id="m01-chip"><svg data-hf-id="hf-1jkz" width="40" height="46" viewBox="0 0 24 28" fill="none" stroke="#6EE7B7" stroke-width="3"><rect data-hf-id="hf-nufu" x="2" y="12" width="20" height="14" rx="3" /><path data-hf-id="hf-5ydr" d="M6 12V8a6 6 0 0 1 12 0v4" /></svg>On your phone</div>
+</div>
+<script>
+(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  const P = '#m01-';
+  const K = 1.4564102564102563, SX = 256, SY = 164;
+  let tapN = 0;
+  // A finger tap: the ring lands, presses and lifts at time t.
+  const tap = (cx, cy, t) => {
+    const el = P + 'tap' + tapN++;
+    tl.set(el, { left: SX + cx * K, top: SY + cy * K }, 0);
+    tl.fromTo(el, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out', immediateRender: false }, t - 0.4);
+    tl.to(el, { scale: 0.78, duration: 0.1, ease: 'power1.in' }, t);
+    tl.to(el, { scale: 1.2, opacity: 0, duration: 0.35, ease: 'power2.out' }, t + 0.12);
+  };
+  // The next screen: instant, or faded over d seconds.
+  const show = (id, t, d = 0) => d
+    ? tl.fromTo(P + id, { opacity: 0 }, { opacity: 1, duration: d, ease: 'power1.inOut', immediateRender: false }, t)
+    : tl.set(P + id, { opacity: 1 }, t);
+  const kick = (t = 0.15) => {
+    tl.fromTo([P + 'k1', P + 'k2'], { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out', stagger: 0.12 }, t);
+  };
+  const flash = (t) => {
+    tl.fromTo(P + 'flash', { opacity: 0.85 }, { opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, t);
+  };
+  const markOn = (id, t) => {
+    tl.fromTo(P + id, { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)', immediateRender: false }, t);
+  };
+
+  tl.fromTo(P + 'icon', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.8)' }, 0.1);
+  tl.fromTo(P + 'l1', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out' }, 0.7);
+  tl.fromTo(P + 'l2', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(2)', transformOrigin: '0% 70%' }, 1.5);
+  tl.fromTo(P + 'p', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, 2.9);
+  tl.fromTo(P + 'chip', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out' }, 6.3);
+  tl.fromTo(P + 'title', { y: 0 }, { y: -16, duration: 8.2, ease: 'none' }, 0);
+  window.__timelines['01-open'] = tl;
+})();
+</script>
+</template>
