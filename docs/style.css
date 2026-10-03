@@ -58,3 +58,6 @@ video {
 .card b { display: block; font-size: 18px; }
 .card small { color: var(--soft); }
 .note { margin-top: 18px; font-size: 14px; color: var(--soft); }
+.sub { margin-top: 26px; font-size: 19px; }
+.list { margin-top: 10px; padding-inline-start: 20px; color: var(--soft); }
+.list li { margin-top: 8px; }
